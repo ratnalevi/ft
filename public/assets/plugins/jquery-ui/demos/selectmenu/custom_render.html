@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Selectmenu - Custom Rendering</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $.widget("custom.iconselectmenu", $.ui.selectmenu, {
+            _renderItem: function (ul, item) {
+                var li = $("<li>"),
+                    wrapper = $("<div>", {text: item.label});
+
+                if (item.disabled) {
+                    li.addClass("ui-state-disabled");
+                }
+
+                $("<span>", {
+                    style: item.element.attr("data-style"),
+                    "class": "ui-icon " + item.element.attr("data-class")
+                })
+                    .appendTo(wrapper);
+
+                return li.append(wrapper).appendTo(ul);
+            }
+        });
+
+        $("#filesA")
+            .iconselectmenu()
+            .iconselectmenu("menuWidget")
+            .addClass("ui-menu-icons");
+
+        $("#filesB")
+            .iconselectmenu()
+            .iconselectmenu("menuWidget")
+            .addClass("ui-menu-icons customicons");
+
+        $("#people")
+            .iconselectmenu()
+            .iconselectmenu("menuWidget")
+            .addClass("ui-menu-icons avatar");
+    </script>
+    <style>
+        h2 {
+            margin: 30px 0 0 0;
+        }
+
+        fieldset {
+            border: 0;
+        }
+
+        label {
+            display: block;
+        }
+
+        /* select with custom icons */
+        .ui-selectmenu-menu .ui-menu.customicons .ui-menu-item-wrapper {
+            padding: 0.5em 0 0.5em 3em;
+        }
+
+        .ui-selectmenu-menu .ui-menu.customicons .ui-menu-item .ui-icon {
+            height: 24px;
+            width: 24px;
+            top: 0.1em;
+        }
+
+        .ui-icon.video {
+            background: url("images/24-video-square.png") 0 0 no-repeat;
+        }
+
+        .ui-icon.podcast {
+            background: url("images/24-podcast-square.png") 0 0 no-repeat;
+        }
+
+        .ui-icon.rss {
+            background: url("images/24-rss-square.png") 0 0 no-repeat;
+        }
+
+        /* select with CSS avatar icons */
+        option.avatar {
+            background-repeat: no-repeat !important;
+            padding-left: 20px;
+        }
+
+        .avatar .ui-icon {
+            background-position: left top;
+        }
+    </style>
+</head>
+<body>
+
+<div class="demo">
+
+    <form action="#">
+        <h2>Selectmenu with framework icons</h2>
+        <fieldset>
+            <label for="filesA">Select a File:</label>
+            <select id="filesA" name="filesA">
+                <option data-class="ui-icon-script" value="jquery">jQuery.js</option>
+                <option data-class="ui-icon-image" value="jquerylogo">jQuery Logo</option>
+                <option data-class="ui-icon-script" value="jqueryui">ui.jQuery.js</option>
+                <option data-class="ui-icon-image" selected="selected" value="jqueryuilogo">jQuery UI Logo</option>
+                <option data-class="ui-icon-help" disabled="disabled" value="somefile">Some unknown file</option>
+            </select>
+        </fieldset>
+
+        <h2>Selectmenu with custom icon images</h2>
+        <fieldset>
+            <label for="filesB">Select a podcast:</label>
+            <select id="filesB" name="filesB">
+                <option data-class="podcast" value="mypodcast">John Resig Podcast</option>
+                <option data-class="video" value="myvideo">Scott González Video</option>
+                <option data-class="rss" value="myrss">jQuery RSS XML</option>
+            </select>
+        </fieldset>
+
+        <h2>Selectmenu with custom avatar 16x16 images as CSS background</h2>
+        <fieldset>
+            <label for="people">Select a Person:</label>
+            <select id="people" name="people">
+                <option data-class="avatar" data-style="background-image: url('http://www.gravatar.com/avatar/b3e04a46e85ad3e165d66f5d927eb609?d=monsterid&amp;r=g&amp;s=16');"
+                        value="1">
+                    John Resig
+                </option>
+                <option data-class="avatar" data-style="background-image: url('http://www.gravatar.com/avatar/e42b1e5c7cfd2be0933e696e292a4d5f?d=monsterid&amp;r=g&amp;s=16');"
+                        value="2">
+                    Tauren Mills
+                </option>
+                <option data-class="avatar" data-style="background-image: url('http://www.gravatar.com/avatar/bdeaec11dd663f26fa58ced0eb7facc8?d=monsterid&amp;r=g&amp;s=16');"
+                        value="3">
+                    Jane Doe
+                </option>
+            </select>
+        </fieldset>
+    </form>
+
+</div>
+
+<div class="demo-description">
+    <p>The whole rendering process is extendable to make custom styling as easy as possible.</p>
+</div>
+</body>
+</html>

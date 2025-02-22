@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Datepicker - Select a Date Range</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        var dateFormat = "mm/dd/yy",
+            from = $("#from")
+                .datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 3
+                })
+                .on("change", function () {
+                    to.datepicker("option", "minDate", getDate(this));
+                }),
+            to = $("#to").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 3
+            })
+                .on("change", function () {
+                    from.datepicker("option", "maxDate", getDate(this));
+                });
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
+    </script>
+</head>
+<body>
+
+<label for="from">From</label>
+<input id="from" name="from" type="text"/>
+<label for="to">to</label>
+<input id="to" name="to" type="text"/>
+
+<div class="demo-description">
+    <p>Select the date range to search for.</p>
+</div>
+</body>
+</html>

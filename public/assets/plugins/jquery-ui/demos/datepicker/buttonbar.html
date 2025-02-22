@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Datepicker - Display button bar</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#datepicker").datepicker({
+            showButtonPanel: true
+        });
+    </script>
+</head>
+<body>
+
+<p>Date: <input id="datepicker" type="text"></p>
+
+<div class="demo-description">
+    <p>Display a button for selecting Today's date and a Done button for closing the calendar with the boolean <code>showButtonPanel</code>
+        option. Each button is enabled by default when the bar is displayed, but can be turned off with additional
+        options. Button text is customizable.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Resizable - Snap to grid</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <style>
+        #resizable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+        }
+
+        #resizable h3 {
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#resizable").resizable({
+            grid: 50
+        });
+    </script>
+</head>
+<body>
+
+<div class="ui-widget-content" id="resizable">
+    <h3 class="ui-widget-header">Grid</h3>
+</div>
+
+<div class="demo-description">
+    <p>Snap the resizable element to a grid. Set the dimensions of grid cells (height and width in pixels) with the
+        <code>grid</code> option.</p>
+</div>
+</body>
+</html>

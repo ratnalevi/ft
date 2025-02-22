@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Datepicker - Display multiple months</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#datepicker").datepicker({
+            numberOfMonths: 3,
+            showButtonPanel: true
+        });
+    </script>
+</head>
+<body>
+
+<p>Date: <input id="datepicker" type="text"></p>
+
+<div class="demo-description">
+    <p>Set the <code>numberOfMonths</code> option to an integer of 2 or more to show multiple months in a single
+        datepicker.</p>
+</div>
+</body>
+</html>

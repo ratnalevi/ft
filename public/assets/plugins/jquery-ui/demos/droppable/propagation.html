@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Droppable - Prevent propagation</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <style>
+        #draggable {
+            width: 100px;
+            height: 40px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px 10px 10px 0;
+        }
+
+        #droppable, #droppable2 {
+            width: 230px;
+            height: 120px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px;
+        }
+
+        #droppable-inner, #droppable2-inner {
+            width: 170px;
+            height: 60px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px;
+        }
+    </style>
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#draggable").draggable();
+
+        $("#droppable, #droppable-inner").droppable({
+            classes: {
+                "ui-droppable-active": "ui-state-active",
+                "ui-droppable-hover": "ui-state-hover"
+            },
+            drop: function (event, ui) {
+                $(this)
+                    .addClass("ui-state-highlight")
+                    .find("> p")
+                    .html("Dropped!");
+                return false;
+            }
+        });
+
+        $("#droppable2, #droppable2-inner").droppable({
+            greedy: true,
+            classes: {
+                "ui-droppable-active": "ui-state-active",
+                "ui-droppable-hover": "ui-state-hover"
+            },
+            drop: function (event, ui) {
+                $(this)
+                    .addClass("ui-state-highlight")
+                    .find("> p")
+                    .html("Dropped!");
+            }
+        });
+    </script>
+</head>
+<body>
+
+<div class="ui-widget-content" id="draggable">
+    <p>Drag me to my target</p>
+</div>
+
+<div class="ui-widget-header" id="droppable">
+    <p>Outer droppable</p>
+    <div class="ui-widget-header" id="droppable-inner">
+        <p>Inner droppable (not greedy)</p>
+    </div>
+</div>
+
+<div class="ui-widget-header" id="droppable2">
+    <p>Outer droppable</p>
+    <div class="ui-widget-header" id="droppable2-inner">
+        <p>Inner droppable (greedy)</p>
+    </div>
+</div>
+
+<div class="demo-description">
+    <p>When working with nested droppables &#8212; for example, you may have an editable directory structure displayed
+        as a tree, with folder and document nodes &#8212; the <code>greedy</code> option set to true prevents event
+        propagation when a draggable is dropped on a child node (droppable).</p>
+</div>
+</body>
+</html>

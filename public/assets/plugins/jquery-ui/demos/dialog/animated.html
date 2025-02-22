@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Dialog - Animation</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script data-modules="effect effect-blind effect-explode" src="../bootstrap.js">
+        $("#dialog").dialog({
+            autoOpen: false,
+            show: {
+                effect: "blind",
+                duration: 1000
+            },
+            hide: {
+                effect: "explode",
+                duration: 1000
+            }
+        });
+
+        $("#opener").on("click", function () {
+            $("#dialog").dialog("open");
+        });
+    </script>
+</head>
+<body>
+
+<div id="dialog" title="Basic dialog">
+    <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized
+        and closed with the 'x' icon.</p>
+</div>
+
+<button id="opener">Open Dialog</button>
+
+<div class="demo-description">
+    <p>Dialogs may be animated by specifying an effect for the show and/or hide properties. You must include the
+        individual effects file for any effects you would like to use.</p>
+</div>
+</body>
+</html>

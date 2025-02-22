@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Resizable - Default functionality</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <style>
+        #resizable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+        }
+
+        #resizable h3 {
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#resizable").resizable();
+    </script>
+</head>
+<body>
+
+<div class="ui-widget-content" id="resizable">
+    <h3 class="ui-widget-header">Resizable</h3>
+</div>
+
+<div class="demo-description">
+    <p>Enable any DOM element to be resizable. With the cursor grab the right or bottom border and drag to the desired
+        width or height.</p>
+</div>
+</body>
+</html>

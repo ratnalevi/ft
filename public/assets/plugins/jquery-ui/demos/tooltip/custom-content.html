@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Tooltip - Custom content</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <style>
+        .photo {
+            width: 300px;
+            text-align: center;
+        }
+
+        .photo .ui-widget-header {
+            margin: 1em 0;
+        }
+
+        .map {
+            width: 350px;
+            height: 350px;
+        }
+
+        .ui-tooltip {
+            max-width: 350px;
+        }
+    </style>
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $(document).tooltip({
+            items: "img, [data-geo], [title]",
+            content: function () {
+                var element = $(this);
+                if (element.is("[data-geo]")) {
+                    var text = element.text();
+                    return "<img class='map' alt='" + text +
+                        "' src='http://maps.google.com/maps/api/staticmap?" +
+                        "zoom=11&size=350x350&maptype=terrain&sensor=false&center=" +
+                        text + "'>";
+                }
+                if (element.is("[title]")) {
+                    return element.attr("title");
+                }
+                if (element.is("img")) {
+                    return element.attr("alt");
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+
+<div class="ui-widget photo">
+    <div class="ui-widget-header ui-corner-all">
+        <h2>St. Stephen's Cathedral</h2>
+        <h3><a data-geo href="http://maps.google.com/maps?q=vienna,+austria&amp;z=11">Vienna, Austria</a></h3>
+    </div>
+    <a href="http://en.wikipedia.org/wiki/File:Wien_Stefansdom_DSC02656.JPG">
+        <img alt="St. Stephen's Cathedral" class="ui-corner-all" src="images/st-stephens.jpg">
+    </a>
+</div>
+
+<div class="ui-widget photo">
+    <div class="ui-widget-header ui-corner-all">
+        <h2>Tower Bridge</h2>
+        <h3><a data-geo href="http://maps.google.com/maps?q=london,+england&amp;z=11">London, England</a></h3>
+    </div>
+    <a href="http://en.wikipedia.org/wiki/File:Tower_bridge_London_Twilight_-_November_2006.jpg">
+        <img alt="Tower Bridge" class="ui-corner-all" src="images/tower-bridge.jpg">
+    </a>
+</div>
+
+<p>All images are part of <a href="http://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>
+    and are licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.en"
+                              title="Creative Commons Attribution-ShareAlike 3.0">CC BY-SA 3.0</a> by the copyright
+    holder.</p>
+
+<div class="demo-description">
+    <p>Shows how to combine different event delegated tooltips into a single instance, by customizing the items and
+        content options.</p>
+    <p>For interactive content, such as scrollable maps, use a dialog.</p>
+</div>
+</body>
+</html>

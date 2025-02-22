@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Datepicker - Populate alternate field</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#datepicker").datepicker({
+            altField: "#alternate",
+            altFormat: "DD, d MM, yy"
+        });
+    </script>
+</head>
+<body>
+
+<p>Date: <input id="datepicker" type="text">&nbsp;<input id="alternate" size="30" type="text"/></p>
+
+<div class="demo-description">
+    <p>Populate an alternate field with its own date format whenever a date is selected using the <code>altField</code>
+        and <code>altFormat</code> options. This feature could be used to present a human-friendly date for user
+        selection, while passing a more computer-friendly date through for further processing.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Droppable - Revert draggable position</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <style>
+        #draggable, #draggable2 {
+            width: 100px;
+            height: 100px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px 10px 10px 0;
+        }
+
+        #droppable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px;
+        }
+    </style>
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#draggable").draggable({revert: "valid"});
+        $("#draggable2").draggable({revert: "invalid"});
+
+        $("#droppable").droppable({
+            classes: {
+                "ui-droppable-active": "ui-state-active",
+                "ui-droppable-hover": "ui-state-hover"
+            },
+            drop: function (event, ui) {
+                $(this)
+                    .addClass("ui-state-highlight")
+                    .find("p")
+                    .html("Dropped!");
+            }
+        });
+    </script>
+</head>
+<body>
+
+<div class="ui-widget-content" id="draggable">
+    <p>I revert when I'm dropped</p>
+</div>
+
+<div class="ui-widget-content" id="draggable2">
+    <p>I revert when I'm not dropped</p>
+</div>
+
+<div class="ui-widget-header" id="droppable">
+    <p>Drop me here</p>
+</div>
+
+<div class="demo-description">
+    <p>Return the draggable (or it's helper) to its original location when dragging stops with the boolean
+        <code>revert</code> option set on the draggable.</p>
+</div>
+</body>
+</html>

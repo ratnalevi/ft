@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Slider - Vertical slider</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#slider-vertical").slider({
+            orientation: "vertical",
+            range: "min",
+            min: 0,
+            max: 100,
+            value: 60,
+            slide: function (event, ui) {
+                $("#amount").val(ui.value);
+            }
+        });
+        $("#amount").val($("#slider-vertical").slider("value"));
+    </script>
+</head>
+<body>
+
+<p>
+    <label for="amount">Volume:</label>
+    <input id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" type="text"/>
+</p>
+
+<div id="slider-vertical" style="height:200px;"></div>
+
+<div class="demo-description">
+    <p>Change the orientation of the slider to vertical. Assign a height value via <code>.height()</code> or by setting
+        the height through CSS, and set the <code>orientation</code> option to "vertical."</p>
+</div>
+</body>
+</html>

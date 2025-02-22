@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Spinner - Overflow</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script data-modules="external/jquery-mousewheel/jquery.mousewheel" src="../bootstrap.js">
+        $("#spinner").spinner({
+            spin: function (event, ui) {
+                if (ui.value > 10) {
+                    $(this).spinner("value", -10);
+                    return false;
+                } else if (ui.value < -10) {
+                    $(this).spinner("value", 10);
+                    return false;
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+
+<p>
+    <label for="spinner">Select a value:</label>
+    <input id="spinner" name="value"/>
+</p>
+
+<div class="demo-description">
+    <p>
+        Overflowing spinner restricted to a range of -10 to 10.
+        For anything above 10, it'll overflow to -10, and the other way round.
+    </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Slider - Snap to increments</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#slider").slider({
+            value: 100,
+            min: 0,
+            max: 500,
+            step: 50,
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.value);
+            }
+        });
+        $("#amount").val("$" + $("#slider").slider("value"));
+    </script>
+</head>
+<body>
+
+<p>
+    <label for="amount">Donation amount ($50 increments):</label>
+    <input id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" type="text"/>
+</p>
+
+<div id="slider"></div>
+
+<div class="demo-description">
+    <p>Increment slider values with the <code>step</code> option set to an integer, commonly a dividend of the slider's
+        maximum value. The default increment is 1.</p>
+</div>
+</body>
+</html>

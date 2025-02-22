@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Checkboxradio - Product Selector</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script data-modules="controlgroup" src="../bootstrap.js">
+        function handleShape(e) {
+            $(".shape")
+                .removeClass("circle pill square rectangle")
+                .addClass($(e.target).val());
+        };
+
+        function handleToggle(e) {
+            var target = $(e.target);
+
+            if (target.is(".brand-toggle")) {
+                var checked = target.is(":checked"),
+                    value = $("[name='brand']")
+                        .filter(":checked")
+                        .attr("data-" + target[0].id)
+                $(".shape").css(target[0].id, checked ? value : "");
+            } else {
+                $(".shape").toggleClass(target[0].id, target.is(":checked"));
+            }
+        }
+
+        function updateBrand() {
+            handleShape({target: $("[name='shape']:checked")});
+            $(".toggle:checked").each(function () {
+                handleToggle({target: $(this)});
+            });
+        }
+
+        // Initalize widgets
+        $("input").checkboxradio();
+        $(".shape-bar, .brand").controlgroup();
+        $(".toggles").controlgroup({
+            direction: "vertical"
+        });
+
+        // Bind event handlers
+        $("[name='shape']").on("change", handleShape);
+        $(".toggle").on("change", handleToggle);
+        $("[name='brand']").on("change", updateBrand);
+
+        // Set initial values
+        updateBrand();
+    </script>
+    <style>
+        .shape {
+            margin-left: 4em;
+            margin-top: 2.5em;
+            height: 8em;
+            width: 8em;
+            box-shadow: 4px 4px 8px;
+            color: #ccc;
+            background-repeat: no-repeat;
+            background-size: 90%;
+            background-position: 50%;
+        }
+
+        .circle, .pill {
+            border-radius: 8em;
+        }
+
+        .pill, .rectangle {
+            width: 16em;
+        }
+
+        .square, .circle {
+            margin-left: 9em;
+        }
+
+        .border {
+            border: 2px solid #333333;
+        }
+
+        .toggles {
+            width: 200px;
+        }
+
+        .toggle-wrap, .shape {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .controls {
+            background: #ccc;
+            padding: 1em;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="controls">
+    <div class="brand-wrap">
+        <h3>1.) Select a brand</h3>
+        <div class="brand">
+            <label for="brand-jquery">jQuery</label>
+            <input data-background-color="#0769AD" data-background-image="url(images/jquery.png)" data-color="#7ACEF4" id="brand-jquery" name="brand"
+                   type="radio">
+            <label for="brand-jquery-ui">jQuery UI</label>
+            <input checked data-background-color="#B24926" data-background-image="url(images/jquery-ui.png)" data-color="#FAA523" id="brand-jquery-ui"
+                   name="brand" type="radio">
+            <label for="brand-jquery-mobile">jQuery Mobile</label>
+            <input data-background-color="#108040" data-background-image="url(images/jquery-mobile.png)" data-color="#3EB249" id="brand-jquery-mobile"
+                   name="brand" type="radio">
+            <label for="brand-sizzle">Sizzle</label>
+            <input data-background-color="#9A1B1E" data-background-image="url(images/sizzle.png)" data-color="#FAA523" id="brand-sizzle" name="brand"
+                   type="radio">
+            <label for="brand-qunit">QUnit</label>
+            <input data-background-color="#390F39" data-background-image="url(images/qunit.png)" data-color="#9C3493" id="brand-qunit" name="brand"
+                   type="radio">
+        </div>
+    </div>
+    <div class="shape-wrap">
+        <h3>2.) Select a shape</h3>
+        <div class="shape-bar">
+            <label for="shape-circle">Circle</label>
+            <input checked id="shape-circle" name="shape" type="radio" value="circle">
+            <label for="shape-square">Square</label>
+            <input id="shape-square" name="shape" type="radio" value="square">
+            <label for="shape-pill">Pill</label>
+            <input id="shape-pill" name="shape" type="radio" value="pill">
+            <label for="shape-rectangle">Rectangle</label>
+            <input id="shape-rectangle" name="shape" type="radio" value="rectangle">
+        </div>
+    </div>
+    <div class="toggle-wrap">
+        <h3>3.) Customize</h3>
+        <div class="toggles">
+            <label for="color">Shadow</label>
+            <input class="toggle brand-toggle" id="color" name="color" type="checkbox">
+            <label for="border">Border</label>
+            <input class="toggle" id="border" name="border" type="checkbox">
+            <label for="background-color">Background</label>
+            <input checked class="toggle brand-toggle" id="background-color" name="background-color" type="checkbox">
+            <label for="background-image">Background Image</label>
+            <input checked class="toggle brand-toggle" id="background-image" name="background-image" type="checkbox">
+        </div>
+    </div>
+    <div class="shape circle background jquery-ui"></div>
+</div>
+
+<div class="demo-description">
+    <p>Using two sets of radio buttons, as horizontal controlgroups, and one group of checkboxes, as a vertical
+        controlgroup, to implement a product selector.</p>
+</div>
+</body>
+</html>

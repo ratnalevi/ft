@@ -1,0 +1,314 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Floteq API",
+        "description": "Floteq API OpenAPI description",
+        "contact": {
+            "email": "levi.ratnakar@flotequsa.com"
+        },
+        "version": "2.0.1"
+    },
+    "servers": [
+        {
+            "url": "https://devweb01.flotequsa.com/api",
+            "description": "Development server"
+        }
+    ],
+    "paths": {
+        "/in-range-report-data/{device_id}/{from_date}/{to_date}": {
+            "get": {
+                "tags": [
+                    "Reporting"
+                ],
+                "summary": "Get In Range Report Data",
+                "operationId": "9af952d8bd30637712569fd34a6978db",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "Device ID (Try 435020109)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "path",
+                        "description": "From Date (YYYY-MM-DDTH:i)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "path",
+                        "description": "To Date (YYYY-MM-DDTH:i)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "In Range Report Data"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/get/brand/{location_id}": {
+            "get": {
+                "tags": [
+                    "Brands"
+                ],
+                "summary": "List all Brands",
+                "operationId": "c5be7e3bbb29d0c9d46e23c343513450",
+                "parameters": [
+                    {
+                        "name": "location_id",
+                        "in": "path",
+                        "description": "Location ID (Try ID: 251)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of Brands"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/pour-score-detail-data/{device_id}/{from_date}/{to_date}": {
+            "get": {
+                "tags": [
+                    "Reporting"
+                ],
+                "summary": "Get Pour Score Detail Report Data",
+                "operationId": "c8eaa9152726983f1ef4f1b9baf1c1aa",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "Device ID (Try 435020109)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "path",
+                        "description": "From Date (YYYY-MM-DDTH:i)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "path",
+                        "description": "To Date (YYYY-MM-DDTH:i)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pour Score Detail Report Data"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/getHomeAlerts/{location_id}": {
+            "get": {
+                "tags": [
+                    "Alerts"
+                ],
+                "summary": "List all Alerts of given location",
+                "operationId": "963de95d9e93b895923028183cf3f25f",
+                "parameters": [
+                    {
+                        "name": "location_id",
+                        "in": "path",
+                        "description": "Location ID (Try ID: 251)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of Alerts"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/load/line/data/{device_id}/{from_date}/{to_date}/{page_number}": {
+            "get": {
+                "tags": [
+                    "Reporting"
+                ],
+                "summary": "Get Line wise summary for home page",
+                "operationId": "8de71bae7275f302a203940d73450478",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "Device ID (Try 435020109)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "path",
+                        "description": "From Date (YYYY-MM-DDTH:i)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "path",
+                        "description": "To Date (YYYY-MM-DDTH:i)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "page_number",
+                        "in": "path",
+                        "description": "Page Number (Default 1)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of LineData"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/load/devices/{location_id}": {
+            "get": {
+                "tags": [
+                    "Devices"
+                ],
+                "summary": "List all Devices for a location",
+                "operationId": "59bb82e2cc1ff16cde69fb34cdf8b874",
+                "parameters": [
+                    {
+                        "name": "location_id",
+                        "in": "path",
+                        "description": "Location ID (Try ID: 251)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of Devices"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/get-user-locations/{user_id}": {
+            "get": {
+                "tags": [
+                    "Location"
+                ],
+                "summary": "Get locations for given user",
+                "operationId": "5f2e1d44d4ba0d223959748dcf554428",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "User ID (Test User ID: 44)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of Locations"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Reporting",
+            "description": "Reporting"
+        },
+        {
+            "name": "Brands",
+            "description": "Brands"
+        },
+        {
+            "name": "Alerts",
+            "description": "Alerts"
+        },
+        {
+            "name": "Devices",
+            "description": "Devices"
+        },
+        {
+            "name": "Location",
+            "description": "Location"
+        }
+    ]
+}

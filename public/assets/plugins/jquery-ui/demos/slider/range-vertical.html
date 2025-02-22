@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Slider - Vertical range slider</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("#slider-range").slider({
+            orientation: "vertical",
+            range: true,
+            values: [17, 67],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+            " - $" + $("#slider-range").slider("values", 1));
+    </script>
+</head>
+<body>
+
+<p>
+    <label for="amount">Target sales goal (Millions):</label>
+    <input id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" type="text"/>
+</p>
+
+<div id="slider-range" style="height:250px;"></div>
+
+<div class="demo-description">
+    <p>Change the orientation of the range slider to vertical. Assign a height value via <code>.height()</code> or by
+        setting the height through CSS, and set the <code>orientation</code> option to "vertical."</p>
+</div>
+</body>
+</html>

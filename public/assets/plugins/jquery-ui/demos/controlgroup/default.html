@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Controlgroup - Default Functionality</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <style>
+        .ui-controlgroup-vertical {
+            width: 150px;
+        }
+
+        .ui-controlgroup.ui-controlgroup-vertical > button.ui-button,
+        .ui-controlgroup.ui-controlgroup-vertical > .ui-controlgroup-label {
+            text-align: center;
+        }
+
+        #car-type-button {
+            width: 120px;
+        }
+
+        .ui-controlgroup-horizontal .ui-spinner-input {
+            width: 20px;
+        }
+    </style>
+    <script src="../../external/requirejs/require.js"></script>
+    <script data-modules="button checkboxradio selectmenu spinner" src="../bootstrap.js">
+        $(".controlgroup").controlgroup()
+        $(".controlgroup-vertical").controlgroup({
+            "direction": "vertical"
+        });
+    </script>
+</head>
+<body>
+<div class="widget">
+    <h1>Controlgroup</h1>
+    <fieldset>
+        <legend>Rental Car</legend>
+        <div class="controlgroup">
+            <select id="car-type">
+                <option>Compact car</option>
+                <option>Midsize car</option>
+                <option>Full size car</option>
+                <option>SUV</option>
+                <option>Luxury</option>
+                <option>Truck</option>
+                <option>Van</option>
+            </select>
+            <label for="transmission-standard">Standard</label>
+            <input id="transmission-standard" name="transmission" type="radio">
+            <label for="transmission-automatic">Automatic</label>
+            <input id="transmission-automatic" name="transmission" type="radio">
+            <label for="insurance">Insurance</label>
+            <input id="insurance" name="insurance" type="checkbox">
+            <label class="ui-controlgroup-label" for="horizontal-spinner"># of cars</label>
+            <input class="ui-spinner-input" id="horizontal-spinner">
+            <button>Book Now!</button>
+        </div>
+    </fieldset>
+    <br/>
+    <fieldset>
+        <legend>Rental Car</legend>
+        <div class="controlgroup-vertical">
+            <select>
+                <option>Compact car</option>
+                <option>Midsize car</option>
+                <option>Full size car</option>
+                <option>SUV</option>
+                <option>Luxury</option>
+                <option>Truck</option>
+                <option>Van</option>
+            </select>
+            <label for="transmission-standard-v">Standard</label>
+            <input id="transmission-standard-v" name="transmission-v" type="radio">
+            <label for="transmission-automatic-v">Automatic</label>
+            <input id="transmission-automatic-v" name="transmission-v" type="radio">
+            <label for="insurance-v">Insurance</label>
+            <input id="insurance-v" name="insurance" type="checkbox">
+            <label class="ui-controlgroup-label" for="vertical-spinner"># of cars</label>
+            <input class="ui-spinner-input" id="vertical-spinner">
+            <button id="book">Book Now!</button>
+        </div>
+    </fieldset>
+</div>
+<div class="demo-description">
+    <p>A controlgroup featuring various form controls. The first features a horizontal toolbar like orientation, the
+        second is in a space saving vertical orientation for usages like mobile devices and panels.</p>
+</div>
+</body>
+</html>

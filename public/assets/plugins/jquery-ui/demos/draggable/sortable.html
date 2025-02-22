@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>jQuery UI Draggable + Sortable</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin: 5px;
+            padding: 5px;
+            width: 150px;
+        }
+    </style>
+    <script src="../../external/requirejs/require.js"></script>
+    <script data-modules="sortable disable-selection" src="../bootstrap.js">
+        $("#sortable").sortable({
+            revert: true
+        });
+        $("#draggable").draggable({
+            connectToSortable: "#sortable",
+            helper: "clone",
+            revert: "invalid"
+        });
+        $("ul, li").disableSelection();
+    </script>
+</head>
+<body>
+
+<ul>
+    <li class="ui-state-highlight" id="draggable">Drag me down</li>
+</ul>
+
+<ul id="sortable">
+    <li class="ui-state-default">Item 1</li>
+    <li class="ui-state-default">Item 2</li>
+    <li class="ui-state-default">Item 3</li>
+    <li class="ui-state-default">Item 4</li>
+    <li class="ui-state-default">Item 5</li>
+</ul>
+
+<div class="demo-description">
+    <p>Draggables are built to interact seamlessly with <a href="http://jqueryui.com/sortable">sortables</a>.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Checkboxradio - No Icons</title>
+    <link href="../../themes/base/all.css" rel="stylesheet">
+    <link href="../demos.css" rel="stylesheet">
+    <script src="../../external/requirejs/require.js"></script>
+    <script src="../bootstrap.js">
+        $("input").checkboxradio({
+            icon: false
+        });
+    </script>
+</head>
+<body>
+<div class="widget">
+    <h1>Checkbox and radio button widgets</h1>
+
+    <h2>Radio Group</h2>
+    <fieldset>
+        <legend>Select a Location:</legend>
+        <label for="radio-1">New York</label>
+        <input id="radio-1" name="radio-1" type="radio">
+        <label for="radio-2">Paris</label>
+        <input id="radio-2" name="radio-1" type="radio">
+        <label for="radio-3">London</label>
+        <input id="radio-3" name="radio-1" type="radio">
+    </fieldset>
+
+    <h2>Checkbox</h2>
+    <fieldset>
+        <legend>Hotel Ratings:</legend>
+        <label for="checkbox-1">2 Star</label>
+        <input id="checkbox-1" name="checkbox-1" type="checkbox">
+        <label for="checkbox-2">3 Star</label>
+        <input id="checkbox-2" name="checkbox-2" type="checkbox">
+        <label for="checkbox-3">4 Star</label>
+        <input id="checkbox-3" name="checkbox-3" type="checkbox">
+        <label for="checkbox-4">5 Star</label>
+        <input id="checkbox-4" name="checkbox-4" type="checkbox">
+    </fieldset>
+
+    <h2>Checkbox nested in label</h2>
+    <fieldset>
+        <legend>Bed Type:</legend>
+        <label for="checkbox-nested-1">2 Double
+            <input id="checkbox-nested-1" name="checkbox-nested-1" type="checkbox">
+        </label>
+        <label for="checkbox-nested-2">2 Queen
+            <input id="checkbox-nested-2" name="checkbox-nested-2" type="checkbox">
+        </label>
+        <label for="checkbox-nested-3">1 Queen
+            <input id="checkbox-nested-3" name="checkbox-nested-3" type="checkbox">
+        </label>
+        <label for="checkbox-nested-4">1 King
+            <input id="checkbox-nested-4" name="checkbox-nested-4" type="checkbox">
+        </label>
+    </fieldset>
+</div>
+
+<div class="demo-description">
+    <p>Examples of the markup that can be used with checkboxes and radio buttons, here showing both without icons.</p>
+</div>
+</body>
+</html>
