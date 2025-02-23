@@ -3,7 +3,6 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use App\Models\UserSession;
 use Illuminate\Support\Facades\Session;
@@ -49,8 +48,11 @@ class AuthService
         $userRole = UserAccount::where('UserID', $user->UserID)->value('AdminAccess');
 
         if ($isApi) {
-            // API Login: Generate Token
-            $token = $user->createToken('AuthToken')->plainTextToken;
+            // Revoke old tokens
+            $user->tokens()->delete();
+            // Generate tokens
+            $accessToken = $user->createToken('auth_token')->plainTextToken;
+            $refreshToken = $user->createToken('refresh_token')->plainTextToken;
 
             return [
                 'error' => false,
@@ -61,7 +63,9 @@ class AuthService
                         'email' => $user->email,
                         'admin_access' => $userRole,
                     ],
-                    'token' => $token,
+                    'access_token' => $accessToken,
+                    'refresh_token' => $refreshToken,
+                    'token_type' => 'Bearer',
                 ],
             ];
         } else {
@@ -80,6 +84,39 @@ class AuthService
                 'message' => 'Login Successful',
             ];
         }
+    }
+
+    public function refresh($request, $isApi = false)
+    {
+        $request->validate([
+            'refresh_token' => 'required'
+        ]);
+
+        // Find user by refresh token
+        $user = User::whereHas('tokens', function ($query) use ($request) {
+            $query->where('token', hash('sha256', $request->refresh_token));
+        })->first();
+
+        if (!$user) {
+            return ['error' => true, 'message' => 'Invalid refresh token', 'statusCode' => '401'];
+        }
+
+        // Revoke all tokens
+        $user->tokens()->delete();
+
+        // Generate new tokens
+        $accessToken = $user->createToken('auth_token')->plainTextToken;
+        $refreshToken = $user->createToken('refresh_token')->plainTextToken;
+
+        return [
+            'error' => false,
+            'message' => 'Token Refreshed',
+            'data' => [
+                'access_token' => $accessToken,
+                'refresh_token' => $refreshToken,
+                'token_type' => 'Bearer',
+            ],
+        ];
     }
 
     private function SessionCreate($user, $is_admin)

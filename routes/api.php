@@ -20,10 +20,19 @@ use Illuminate\Support\Facades\Route;
 */
 // Grouping existing APIs under v1
 Route::prefix('v1')->group(function () {
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/user', function (Request $request) {
+            return response()->json(['user' => $request->user()], 200);
+        });
+        Route::post('/logout', [ApiUserController::class, 'logoutUser']);
+    });
+
     Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         return $request->user();
     });
     Route::post('/login', [ApiUserController::class, 'loginDashboard']);
+    Route::post('/refresh', [ApiUserController::class, 'refreshToken']);
 
     Route::get('/get/brand/{location_id}', [LineDataController::class, 'BrandGetAll']);
     Route::get('/load/devices/{location_id}', [UserController::class, 'loadDevices']);
