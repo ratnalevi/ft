@@ -7,6 +7,8 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Api\ApiUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Sanctum\PersonalAccessToken;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/user', function (Request $request) {
             return response()->json(['user' => $request->user()], 200);
         });
-        Route::post('/logout', [ApiUserController::class, 'logoutUser']);
+        Route::post('/logout', [ApiUserController::class, 'logout']);
     });
 
     Route::post('/login', [ApiUserController::class, 'loginDashboard']);

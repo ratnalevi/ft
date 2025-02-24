@@ -37,13 +37,9 @@ class ApiUserController extends Controller
         return response()->json($result['data'], 200);
     }
 
-    public function logoutUser(Request $request)
+    public function logout(Request $request)
     {
-        dd("Uday Logout");
-        // $request->validate([
-        //     'refresh_token' => 'required'
-        // ]);
-        // $request->user()->tokens()->delete();
-        // return response()->json(['message' => 'Logged out']);
+        $request->user()->tokens()->delete();
+        return response()->json(['message' => 'Logged out']);
     }
 }
